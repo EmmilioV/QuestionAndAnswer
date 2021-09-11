@@ -17,13 +17,11 @@ namespace Controller
         }
 
         //TODO: extract of BD
-        public static void Update(Player player, int roundNumber)
+        public static void Update(Player player, List<string> roundInfo)
         {
-            List<Round> rounds = new List<Round>();
-            int score = rounds.Where(x => x.Id.Equals(roundNumber)).Select(x => x.Score).FirstOrDefault();
 
-            player.TotalScore += score;
-            player.RoundId = roundNumber.ToString();
+            player.TotalScore += int.Parse(roundInfo[2]);
+            player.RoundId = roundInfo[0].ToString();
 
             return;
         }
