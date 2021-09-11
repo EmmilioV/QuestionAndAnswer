@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Objects\Category.cs" />
     <Compile Include="Objects\Option.cs" />
     <Compile Include="Objects\Player.cs" />
     <Compile Include="Objects\Question.cs" />

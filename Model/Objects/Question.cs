@@ -9,18 +9,18 @@ namespace Model.Objects
     public class Question
     {
         private string _id;
-        private Category _categoryId;
+        private string _roundId;
         private string _description;
 
-        public Question(string id, Category categoryId, string description)
+        public Question(string id, string roundId, string description)
         {
             _id = id;
-            _categoryId = categoryId;
+            _roundId = roundId;
             _description = description;
         }
 
         public string Id { get => _id; set => _id = value; }
-        public Category CategoryId { get => _categoryId; set => _categoryId = value; }
+        public string RoundId { get => _roundId; set => _roundId = value; }
         public string Description { get => _description; set => _description = value; }
     }
 }

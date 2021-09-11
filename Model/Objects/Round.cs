@@ -9,21 +9,23 @@ namespace Model.Objects
     public class Round
     {
         private string _id;
-        private Category _categoryId;
+        private int _difficulty;
         private bool _result;
         private int _score;
 
-        public Round(string id, Category categoryId, bool result, int score)
+        public Round() { }
+
+        public Round(string id, int dificulty, bool result, int score)
         {
             _id = id;
-            _categoryId = categoryId;
+            _difficulty = dificulty;
             _result = result;
             _score = score;
         }
 
         public string Id { get => _id; set => _id = value; }
-        public Category CategoryId { get => _categoryId; set => _categoryId = value; }
+        public int Dificulty { get => _difficulty; set => _difficulty = value; }
         public bool Name { get => _result; set => _result = value; }
-        public int TotalScore { get => _score; set => _score = value; }
+        public int Score { get => _score; set => _score = value; }
     }
 }

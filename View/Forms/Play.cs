@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Controller;
+using Model.Objects;
+using System;
 using System.Windows.Forms;
 
 namespace View.Forms
@@ -19,9 +14,17 @@ namespace View.Forms
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            Questions questions = new Questions();
+            PlayerController playerController = new PlayerController();
+            Player player= playerController.CreatePlayer(txtDocNumber.Text, txtName.Text);
+            
+            Questions questions = new Questions(player);
             questions.Show();
             this.Visible = false;
+        }
+
+        private void Play_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
