@@ -16,7 +16,7 @@ namespace Model.Objects
 
         public Player(string docNumber, string roundId, string name, int totalScore)
         {
-            _guid = new Guid();
+            _guid = Guid.NewGuid();
             _docNumber = docNumber;
             _roundId = roundId;
             _name = name;

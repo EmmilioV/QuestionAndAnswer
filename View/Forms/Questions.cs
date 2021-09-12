@@ -35,6 +35,7 @@ namespace View.Forms
         private void GenerateQuestion()
         {
             _roundNumber += 1;
+            lblTittle.Text = "ROUND " + _roundNumber;
 
             if(_roundNumber <= 5)
             {
@@ -55,7 +56,7 @@ namespace View.Forms
             else
             {
                 //_player= _playerController.Update(_player, _round, true);
-                new Win(_player);
+                new Win(_player).Show();
                 this.Visible = false;
             }
 

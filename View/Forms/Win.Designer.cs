@@ -71,6 +71,7 @@ namespace View.Forms
             this.Controls.Add(this.lblPlayerName);
             this.Name = "Win";
             this.Text = "Win";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Win_FormClosing);
             this.Load += new System.EventHandler(this.Win_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

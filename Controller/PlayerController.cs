@@ -18,7 +18,7 @@ namespace Controller
 
         public Player CreatePlayer(string docNumber, string name)
         {
-            Player player = new Player(docNumber, "0", name, 0);
+            Player player = new Player(docNumber, "1", name, 0);
 
             try
             {
@@ -66,7 +66,7 @@ namespace Controller
                 _connection.Open();
 
                 _command = new SqlCommand("Update Player " +
-                    "Set roundId = @roundId, totalScore= @totalScore)" +
+                    "Set roundId = @roundId, totalScore= @totalScore " +
                     "where guid = @guid", _connection);
 
 

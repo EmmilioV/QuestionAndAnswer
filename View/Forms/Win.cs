@@ -16,13 +16,18 @@ namespace View.Forms
         public Win(Player player)
         {
             InitializeComponent();
-            lblPlayerName.Text = player.Name.ToString()+"congratulations! with this score you have 25% descount in all our stores";
+            lblPlayerName.Text = player.Name.ToString()+" congratulations! with this score you have 25% descount in all our stores";
             lblPlayerScore.Text = player.TotalScore.ToString();
         }
 
         private void Win_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void Win_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
