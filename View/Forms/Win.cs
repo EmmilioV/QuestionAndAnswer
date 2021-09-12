@@ -13,12 +13,11 @@ namespace View.Forms
 {
     public partial class Win : Form
     {
-        private readonly Player _player;
-
         public Win(Player player)
         {
             InitializeComponent();
-            _player = player;
+            lblPlayerName.Text = player.Name.ToString()+"congratulations! with this score you have 25% descount in all our stores";
+            lblPlayerScore.Text = player.TotalScore.ToString();
         }
 
         private void Win_Load(object sender, EventArgs e)

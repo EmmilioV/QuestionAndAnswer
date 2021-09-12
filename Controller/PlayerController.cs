@@ -49,10 +49,14 @@ namespace Controller
             return player;
         }
 
-        public Player Update(Player player, Round round)
+        public Player Update(Player player, Round round, bool correctAnswer)
         {
-            player.TotalScore += round.Score;
+            
             player.RoundId = round.Id;
+            if (correctAnswer)
+            {
+                player.TotalScore += round.Score;
+            }
 
             try
             {
@@ -82,12 +86,6 @@ namespace Controller
             }
 
             return player;
-        }
-
-        public static void EndGame(Player player, int roundNumber)
-        {
-            player.RoundId = roundNumber.ToString();
-            return;
         }
     }
 }

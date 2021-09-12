@@ -16,6 +16,7 @@ namespace View.Forms
     {
         private Player _player;
         private Round _round;
+        private Question _question;
         private QuestionController _questionController = new QuestionController();
         private OptionController _optionController = new OptionController();
         private PlayerController _playerController = new PlayerController();
@@ -34,15 +35,16 @@ namespace View.Forms
         private void GenerateQuestion()
         {
             _roundNumber += 1;
-            _roundController = new RoundController();
-            _round = _roundController.GetRound(_roundNumber);
 
             if(_roundNumber <= 5)
             {
-                Question question = _questionController.GenerateQuestion(_roundNumber.ToString());
-                lblQuestion.Text = question.Description;
+                _roundController = new RoundController();
+                _round = _roundController.GetRound(_roundNumber);
 
-                _questionId = question.Id;
+                _question = _questionController.GenerateQuestion(_roundNumber.ToString());
+                lblQuestion.Text = _question.Description;
+
+                _questionId = _question.Id;
                 _options = _optionController.GenerateOptions(_questionId);
 
                 rbOption1.Text = _options[0].Description;
@@ -52,7 +54,7 @@ namespace View.Forms
             }
             else
             {
-                _player= _playerController.Update(_player, _round);
+                //_player= _playerController.Update(_player, _round, true);
                 new Win(_player);
                 this.Visible = false;
             }
@@ -76,13 +78,13 @@ namespace View.Forms
             if(_questionController.ValidateAnswer(_options, playerAnswerId))
             {
                 MessageBox.Show("Correct! Keep going", "CORRECT", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                _player = _playerController.Update(_player, _round);
+                _player = _playerController.Update(_player, _round, true);
                 GenerateQuestion();
             }
             else
             {
-                PlayerController.EndGame(_player, _roundNumber);
                 MessageBox.Show("Incorrect Answer. Good luck to the next one","INCORRECT", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                _player = _playerController.Update(_player, _round, false);
                 new Play().Show();
                 this.Visible = false;
             }
@@ -92,7 +94,6 @@ namespace View.Forms
 
         private void END(object sender, FormClosingEventArgs e)
         {
-            PlayerController.EndGame(_player, _roundNumber);
             Application.Exit();
         }
     }
