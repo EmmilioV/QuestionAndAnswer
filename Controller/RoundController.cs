@@ -11,43 +11,48 @@ namespace Controller
 {
     public class RoundController
     {
-        SqlConnection _connetion;
+        SqlConnection _connection;
         SqlCommand _command;
         SqlDataReader _reader;
 
         public RoundController()
         {}
 
-        public List<string> GetRound(int roundNumber)
+        public Round GetRound(int roundNumber)
         {
             DataAccess dataAccess = new DataAccess();
-            _command = new SqlCommand("Select * From Round Where id = @roundNumber", dataAccess.getConexion());
+            _connection = dataAccess.getConnection();
+            _command = new SqlCommand("Select * From Round Where id = @roundNumber", _connection);
 
-            _command.Parameters.AddWithValue("@roundNumber", roundNumber);
+            _command.Parameters.AddWithValue("@roundNumber", roundNumber.ToString());
 
-            List<string> roundInfo = new List<string>();
+            Round round = null;
             
             try
             {
-                dataAccess.Open();
+                _connection.Open();
 
                 _reader = _command.ExecuteReader();
                 
                 if(_reader.HasRows)
                 {
-                    roundInfo[0] = _reader["id"].ToString();
-                    roundInfo[1] = _reader["difficulty"].ToString();
-                    roundInfo[2] = _reader["score"].ToString();
-
+                    while (_reader.Read())
+                    {
+                        round = new Round(_reader["id"].ToString(),
+                                        int.Parse(_reader["difficulty"].ToString()),
+                                        int.Parse(_reader["score"].ToString()));
+                    }
                 }
 
-                dataAccess.Close();
+                _connection.Close();
             }
             catch (Exception ex)
             {
+                _connection.Close();
+
                 Console.WriteLine("El error fue " + ex);
             }
-            return roundInfo;
+            return round;
         }
     }
 }

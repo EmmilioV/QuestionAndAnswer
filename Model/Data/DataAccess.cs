@@ -14,7 +14,7 @@ namespace Model.Data
         public DataAccess()
         {
             conexion = new SqlConnection();
-            conexion.ConnectionString = Properties.Settings.Default.Cadena;
+            conexion.ConnectionString = Properties.Settings.Default.cadena;
         }
 
 
@@ -54,7 +54,7 @@ namespace Model.Data
         /// </summary>
         /// <returns></returns>
 
-        public SqlConnection getConexion()
+        public SqlConnection getConnection()
         {
             return conexion;
         }

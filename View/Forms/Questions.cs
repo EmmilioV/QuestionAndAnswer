@@ -15,12 +15,12 @@ namespace View.Forms
     public partial class Questions : Form
     {
         private Player _player;
+        private Round _round;
         private QuestionController _questionController = new QuestionController();
         private OptionController _optionController = new OptionController();
         private RoundController _roundController;
         private int _roundNumber = 0;
         private List<Option> _options;
-        private List<string> _roundInfo;
         private string _questionId;
 
         public Questions(Player player)
@@ -32,12 +32,12 @@ namespace View.Forms
 
         private void GenerateQuestion()
         {
+            _roundNumber += 1;
             _roundController = new RoundController();
-            _roundInfo = _roundController.GetRound(_roundNumber);
+            _round = _roundController.GetRound(_roundNumber);
 
-            if(_roundNumber < 5)
+            if(_roundNumber <= 5)
             {
-                _roundNumber += 1;
                 Question question = _questionController.GenerateQuestion(_roundNumber.ToString());
                 lblQuestion.Text = question.Description;
 
@@ -51,7 +51,7 @@ namespace View.Forms
             }
             else
             {
-                PlayerController.Update(_player, _roundInfo);
+                PlayerController.Update(_player, _round);
                 new Win(_player);
                 this.Visible = false;
             }
@@ -75,7 +75,7 @@ namespace View.Forms
             if(_questionController.ValidateAnswer(_options, playerAnswerId))
             {
                 MessageBox.Show("Correct! Keep going", "CORRECT", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                PlayerController.Update(_player, _roundInfo);
+                PlayerController.Update(_player, _round);
                 GenerateQuestion();
             }
             else

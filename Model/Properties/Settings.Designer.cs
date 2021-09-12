@@ -25,13 +25,13 @@ namespace Model.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source = localhost; Initial Catalog = GameQyA; Integrated Security = True;")]
-        public string Cadena {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source = localhost; Initial Catalog = GameQyA; Integrated Security = true;")]
+        public string cadena {
             get {
-                return ((string)(this["Cadena"]));
+                return ((string)(this["cadena"]));
             }
             set {
-                this["Cadena"] = value;
+                this["cadena"] = value;
             }
         }
     }

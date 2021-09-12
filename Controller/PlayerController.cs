@@ -17,11 +17,11 @@ namespace Controller
         }
 
         //TODO: extract of BD
-        public static void Update(Player player, List<string> roundInfo)
+        public static void Update(Player player, Round round)
         {
 
-            player.TotalScore += int.Parse(roundInfo[2]);
-            player.RoundId = roundInfo[0].ToString();
+            player.TotalScore += round.Score;
+            player.RoundId = round.Id;
 
             return;
         }
