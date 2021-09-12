@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Objects;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -9,54 +10,17 @@ namespace Model.Data
 {
     public class DataAccess
     {
-        SqlConnection conexion;
+        SqlConnection _connection;
 
         public DataAccess()
         {
-            conexion = new SqlConnection();
-            conexion.ConnectionString = Properties.Settings.Default.cadena;
+            _connection = new SqlConnection();
+            _connection.ConnectionString = Properties.Settings.Default.cadena;
         }
-
-
-        /// <summary>
-        /// Abre la base de datos
-        /// </summary>
-        public void Open()
-        {
-            try
-            {
-                conexion.Open();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("El error fue " + ex);
-            }
-        }
-
-        /// <summary>
-        /// cierra la base de datos 
-        /// </summary>
-
-        public void Close()
-        {
-            try
-            {
-                conexion.Close();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("El error fue " + ex);
-            }
-        }
-
-        /// <summary>
-        /// obtiene la conexion con la base de datos 
-        /// </summary>
-        /// <returns></returns>
 
         public SqlConnection getConnection()
         {
-            return conexion;
+            return _connection;
         }
     }
 }

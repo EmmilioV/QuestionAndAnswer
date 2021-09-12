@@ -18,6 +18,7 @@ namespace View.Forms
         private Round _round;
         private QuestionController _questionController = new QuestionController();
         private OptionController _optionController = new OptionController();
+        private PlayerController _playerController = new PlayerController();
         private RoundController _roundController;
         private int _roundNumber = 0;
         private List<Option> _options;
@@ -51,7 +52,7 @@ namespace View.Forms
             }
             else
             {
-                PlayerController.Update(_player, _round);
+                _player= _playerController.Update(_player, _round);
                 new Win(_player);
                 this.Visible = false;
             }
@@ -75,7 +76,7 @@ namespace View.Forms
             if(_questionController.ValidateAnswer(_options, playerAnswerId))
             {
                 MessageBox.Show("Correct! Keep going", "CORRECT", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                PlayerController.Update(_player, _round);
+                _player = _playerController.Update(_player, _round);
                 GenerateQuestion();
             }
             else

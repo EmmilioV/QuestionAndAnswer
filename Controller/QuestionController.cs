@@ -18,7 +18,7 @@ namespace Controller
         
         public Question GenerateQuestion(string roundId)
         {
-            int randomNum = new Random().Next(1, 6);
+            int randomNum = new Random().Next(0, 5);
             List<Question> questions = GenerateListQuestion(roundId);
             Question question;
 

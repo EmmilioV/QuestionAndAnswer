@@ -23,8 +23,8 @@ namespace Controller
             DataAccess dataAccess = new DataAccess();
             _connection = dataAccess.getConnection();
 
-            _command = new SqlCommand("Select * from option where questionId = @questionId", _connection);
-            _command.Parameters.AddWithValue("@roundId", questionId);
+            _command = new SqlCommand("Select * from [dbo].[Option] where questionId = @questionId", _connection);
+            _command.Parameters.AddWithValue("@questionId", questionId);
 
             try
             {
