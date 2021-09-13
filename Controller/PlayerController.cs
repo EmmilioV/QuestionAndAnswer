@@ -27,14 +27,16 @@ namespace Controller
 
                 _connection.Open();
 
-                _command = new SqlCommand("Insert into Player (guid, docNumber, name, roundId, totalScore) " +
-                    "values (@guid, @docNumber, @name, @roundId, @totalScore)", _connection);
+                _command = new SqlCommand("Insert into Player (guid, docNumber, name, roundId, totalScore, win) " +
+                    "values (@guid, @docNumber, @name, @roundId, @totalScore, @win)", _connection);
 
                 _command.Parameters.AddWithValue("@guid", player.Guid);
                 _command.Parameters.AddWithValue("@docNumber", player.DocNumber);
                 _command.Parameters.AddWithValue("@name", player.Name);
                 _command.Parameters.AddWithValue("@roundId", player.RoundId);
                 _command.Parameters.AddWithValue("@totalScore", player.TotalScore);
+                _command.Parameters.AddWithValue("@win", player.Win);
+
 
                 _command.ExecuteNonQuery();
 
@@ -53,10 +55,11 @@ namespace Controller
         {
             
             player.RoundId = round.Id;
+
             if (correctAnswer)
-            {
                 player.TotalScore += round.Score;
-            }
+            if (correctAnswer && round.Id.Equals("5"))
+                player.Win = true;
 
             try
             {
@@ -66,14 +69,14 @@ namespace Controller
                 _connection.Open();
 
                 _command = new SqlCommand("Update Player " +
-                    "Set roundId = @roundId, totalScore= @totalScore " +
+                    "Set roundId = @roundId, totalScore= @totalScore, win = @win " +
                     "where guid = @guid", _connection);
 
 
                 _command.Parameters.AddWithValue("@roundId", player.RoundId);
                 _command.Parameters.AddWithValue("@totalScore", player.TotalScore);
                 _command.Parameters.AddWithValue("@guid", player.Guid);
-
+                _command.Parameters.AddWithValue("@win", player.Win);
 
                 _command.ExecuteNonQuery();
 

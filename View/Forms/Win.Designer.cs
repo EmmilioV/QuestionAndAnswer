@@ -37,7 +37,7 @@ namespace View.Forms
             // lblPlayerName
             // 
             this.lblPlayerName.AutoSize = true;
-            this.lblPlayerName.Location = new System.Drawing.Point(208, 27);
+            this.lblPlayerName.Location = new System.Drawing.Point(12, 19);
             this.lblPlayerName.Name = "lblPlayerName";
             this.lblPlayerName.Size = new System.Drawing.Size(76, 13);
             this.lblPlayerName.TabIndex = 0;
@@ -46,7 +46,7 @@ namespace View.Forms
             // lblTittleScore
             // 
             this.lblTittleScore.AutoSize = true;
-            this.lblTittleScore.Location = new System.Drawing.Point(226, 93);
+            this.lblTittleScore.Location = new System.Drawing.Point(12, 91);
             this.lblTittleScore.Name = "lblTittleScore";
             this.lblTittleScore.Size = new System.Drawing.Size(44, 13);
             this.lblTittleScore.TabIndex = 1;
@@ -55,7 +55,7 @@ namespace View.Forms
             // lblPlayerScore
             // 
             this.lblPlayerScore.AutoSize = true;
-            this.lblPlayerScore.Location = new System.Drawing.Point(196, 147);
+            this.lblPlayerScore.Location = new System.Drawing.Point(12, 152);
             this.lblPlayerScore.Name = "lblPlayerScore";
             this.lblPlayerScore.Size = new System.Drawing.Size(97, 13);
             this.lblPlayerScore.TabIndex = 2;
@@ -65,7 +65,7 @@ namespace View.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 268);
+            this.ClientSize = new System.Drawing.Size(347, 314);
             this.Controls.Add(this.lblPlayerScore);
             this.Controls.Add(this.lblTittleScore);
             this.Controls.Add(this.lblPlayerName);

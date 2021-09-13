@@ -13,6 +13,7 @@ namespace Model.Objects
         private string _roundId;
         private string _name;
         private int _totalScore;
+        private bool _win;
 
         public Player(string docNumber, string roundId, string name, int totalScore)
         {
@@ -21,6 +22,7 @@ namespace Model.Objects
             _roundId = roundId;
             _name = name;
             _totalScore = totalScore;
+            _win = false;
         }
 
         public string DocNumber { get => _docNumber; set => _docNumber = value; }
@@ -28,6 +30,7 @@ namespace Model.Objects
         public string RoundId { get => _roundId; set => _roundId = value; }
         public string Name { get => _name; set => _name = value; }
         public int TotalScore { get => _totalScore; set => _totalScore = value; }
+        public bool Win { get => _win; set => _win = value; }
     }
 
 }
